@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\HomeController;
+use App\Admin\Controllers\UserController;
 
 
 Route::get('/', function () {
@@ -10,3 +11,4 @@ Route::get('/', function () {
 
 
 Route::get('/admin/home', [HomeController::class, 'index']);
+Route::resource('/admin/utilisateurs', UserController::class);

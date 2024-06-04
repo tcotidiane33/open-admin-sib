@@ -389,6 +389,8 @@ return [
     |--------------------------------------------------------------------------
     */
     'grid_action_class' => \OpenAdmin\Admin\Grid\Displayers\Actions\Actions::class,
+    // 'grid_action_class' => \OpenAdmin\Admin\Grid\Displayers\Actions\DropdownActions::class,
+    // 'grid_action_class' => \OpenAdmin\Admin\Grid\Displayers\Actions\ContextMenuActions::class,
 
     /*
     |--------------------------------------------------------------------------

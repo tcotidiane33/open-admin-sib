@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use OpenAdmin\Admin\Controllers\AdminController;
+use App\Models\Statut;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
-use \App\Models\Unitcommercial;
+use OpenAdmin\Admin\Controllers\AdminController;
 
-class UcommercialController extends AdminController
+class StatutController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Unité Commerciale';
+    protected $title = 'Statuts';
 
     /**
      * Make a grid builder.
@@ -24,30 +24,28 @@ class UcommercialController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Unitcommercial());
+        $grid = new Grid(new Statut());
 
-        $grid->column('id', __('Id'));
-        $grid->column('code', __('Code unité commerciale'));
-        $grid->column('name', __('Nom unité commerciale'));
+        // $grid->column('id', __('ID'))->sortable();
+        $grid->column('Libelle', __('Libellé'))->sortable();
         // $grid->column('created_at', __('Created at'));
         // $grid->column('updated_at', __('Updated at'));
-
+        $grid->sortable();
         return $grid;
     }
 
     /**
      * Make a show builder.
      *
-     * @param mixed $id
+     * @param mixed   $id
      * @return Show
      */
     protected function detail($id)
     {
-        $show = new Show(Unitcommercial::findOrFail($id));
+        $show = new Show(Statut::findOrFail($id));
 
-        // $show->field('id', __('Id'));
-        $show->field('code', __('Code unité commerciale'));
-        $show->field('name', __('Nom unité commerciale'));
+        // $show->field('id', __('ID'));
+        $show->field('Libelle', __('Libellé'));
         // $show->field('created_at', __('Created at'));
         // $show->field('updated_at', __('Updated at'));
 
@@ -61,10 +59,12 @@ class UcommercialController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Unitcommercial());
+        $form = new Form(new Statut());
 
-        $form->text('code', __('Code unité commerciale'));
-        $form->textarea('name', __('Nom unité commerciale'));
+        // $form->display('id', __('ID'));
+        $form->text('Libelle', __('Libellé'));
+        // $form->display('created_at', __('Created At'));
+        // $form->display('updated_at', __('Updated At'));
 
         return $form;
     }

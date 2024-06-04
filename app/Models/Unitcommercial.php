@@ -8,7 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Unitcommercial extends Model
 {
     use HasFactory;
-    
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'id',
+    ];
     public function affectationPortefeuilles()
     {
         return $this->hasMany(AffectationPortefeuille::class);

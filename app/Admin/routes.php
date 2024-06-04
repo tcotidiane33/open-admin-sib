@@ -13,6 +13,14 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->get('/infos', 'HomeController@infos')->name('infos');
+    $router->resource('/users', UserController::class);
+//Administration
+    // $router->resource('', Controller::class);  // Correction ici
+    $router->resource('portefeuilles', PortefeuilleController::class);  // Correction ici
+    $router->resource('relations', RelationController::class);  // Correction ici
+    $router->resource('affectations', AffectationController::class);  // Correction ici
+    $router->resource('produits', ProduitController::class);  // Correction ici
+
 
 // parametrages
     $router->resource('budgets', BudgetController::class);  // Correction ici
@@ -22,5 +30,8 @@ Route::group([
     $router->resource('rubriqueComptable', RubriqueComptableController::class);  // Correction ici
     $router->resource('codeOperateurs', CodeOperateurController::class);  // Correction ici
     $router->resource('affectationsPortefeuilles', AffectationPortefeuilleController::class);  // Correction ici
+    $router->resource('statuts', StatutController::class);  // Correction ici
 
 });
+
+

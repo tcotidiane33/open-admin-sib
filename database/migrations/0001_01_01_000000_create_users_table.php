@@ -18,7 +18,16 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+
+            //foreign Key == #Portefeuille #Agence #Unité Commerciale #Marché #Statut
+            // $table->unsignedBigInteger('unitcommercial_id');
+            // $table->unsignedBigInteger('marche_id');
+            // $table->unsignedBigInteger('affectation_portefeuilles_id');
+            // $table->timestamps();
+
+            // $table->foreign('unitcommercial_id')->references('id')->on('unitcommercials')->onDelete('cascade');
+            // $table->foreign('segment_id')->references('id')->on('segments')->onDelete('cascade');
+
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
