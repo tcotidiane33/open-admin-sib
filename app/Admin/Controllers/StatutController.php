@@ -27,7 +27,7 @@ class StatutController extends AdminController
         $grid = new Grid(new Statut());
 
         // $grid->column('id', __('ID'))->sortable();
-        $grid->column('Libelle', __('Libellé'))->sortable();
+        $grid->column('libelle', __('Libellé'))->sortable();
         // $grid->column('created_at', __('Created at'));
         // $grid->column('updated_at', __('Updated at'));
         $grid->sortable();
@@ -45,7 +45,7 @@ class StatutController extends AdminController
         $show = new Show(Statut::findOrFail($id));
 
         // $show->field('id', __('ID'));
-        $show->field('Libelle', __('Libellé'));
+        $show->field('libelle', __('Libellé'));
         // $show->field('created_at', __('Created at'));
         // $show->field('updated_at', __('Updated at'));
 
@@ -62,7 +62,7 @@ class StatutController extends AdminController
         $form = new Form(new Statut());
 
         // $form->display('id', __('ID'));
-        $form->text('Libelle', __('Libellé'));
+        $form->text('libelle', __('Libellé'));
         // $form->display('created_at', __('Created At'));
         // $form->display('updated_at', __('Updated At'));
 

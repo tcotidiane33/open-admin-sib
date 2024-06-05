@@ -26,13 +26,14 @@ class PortefeuilleController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Portefeuille);
+        $grid = new Grid(new Portefeuille());
 
         // $grid->column('id', __('ID'))->sortable();
         $grid->column('title', __('Titre'));
         $grid->column('libelle', __('Libellé'));
         // $grid->column('created_at', __('Created at'));
         // $grid->column('updated_at', __('Updated at'));
+        $grid->sortable();
         $grid->actions(function ($actions) {
             $actions->add(new Replicate());
         });
@@ -69,7 +70,7 @@ class PortefeuilleController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Portefeuille);
+        $form = new Form(new Portefeuille());
 
         // $form->display('id', __('ID'));
         $form->text('title', __('Titre'));

@@ -2,19 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
+use Spatie\EloquentSortable\Sortable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Statut extends Model implements Sortable
+class Fonction extends Model implements Sortable
 {
     use HasFactory;
 
     use SortableTrait;
 
     protected $fillable = [
-        'libelle',
+        'name',
         'order_column',
     ];
 
@@ -22,4 +22,9 @@ class Statut extends Model implements Sortable
             'order_column_name' => 'order_column',
             'sort_when_creating' => true,
         ];
+
+        public function user()
+        {
+            return $this->belongsTo(User::class);
+        }
 }

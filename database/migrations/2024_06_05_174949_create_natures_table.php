@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('marches', function (Blueprint $table) {
+        Schema::create('natures', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable();
-            $table->text('name')->nullable();
+            $table->text('title');
+            $table->longText('libelle');
             $table->integer('order_column')->nullable();
             $table->timestamps();
         });
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('marches');
-        Schema::table('marches', function (Blueprint $table) {
+        Schema::dropIfExists('natures');
+        Schema::table('natures', function (Blueprint $table) {
             $table->dropColumn('order_column');
         });
     }

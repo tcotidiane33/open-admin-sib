@@ -6,16 +6,16 @@ use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
-use \App\Models\Segment;
+use App\Models\Crv;
 
-class SegmentController extends AdminController
+class CrvCreateController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Les segments';
+    protected $title = 'Compte Rendu de Visite';
 
     /**
      * Make a grid builder.
@@ -24,30 +24,26 @@ class SegmentController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Segment());
+        $grid = new Grid(new Crv);
 
-        $grid->column('id', __('Id'));
-        $grid->column('code', __('Code du segment'));
-        $grid->column('name', __('Intitulé du segment'));
+        $grid->column('id', __('ID'))->sortable();
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-        $grid->sortable();
+
         return $grid;
     }
 
     /**
      * Make a show builder.
      *
-     * @param mixed $id
+     * @param mixed   $id
      * @return Show
      */
     protected function detail($id)
     {
-        $show = new Show(Segment::findOrFail($id));
+        $show = new Show(Crv::findOrFail($id));
 
-        $show->field('id', __('Id'));
-        $show->field('code', __('Code du segment'));
-        $show->field('name', __('Intitulé du segment'));
+        $show->field('id', __('ID'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -61,10 +57,11 @@ class SegmentController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Segment());
+        $form = new Form(new Crv);
 
-        $form->text('code', __('Code du segment'));
-        $form->textarea('name', __('Intitulé du segment'));
+        $form->display('id', __('ID'));
+        $form->display('created_at', __('Created At'));
+        $form->display('updated_at', __('Updated At'));
 
         return $form;
     }

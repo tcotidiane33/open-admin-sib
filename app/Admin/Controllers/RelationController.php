@@ -25,13 +25,14 @@ class RelationController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Relation);
+        $grid = new Grid(new Relation());
 
         // $grid->column('id', __('ID'))->sortable();
         $grid->column('title', __('Titre'));
         $grid->column('libelle', __('Libellé'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
+        $grid->sortable();
         $grid->actions(function ($actions) {
             $actions->add(new Replicate());
         });
@@ -65,7 +66,7 @@ class RelationController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Relation);
+        $form = new Form(new Relation());
 
         // $form->integer('id', __('ID'));
         $form->text('title', __('Titre'));

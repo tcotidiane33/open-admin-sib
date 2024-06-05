@@ -7,23 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\SortableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Marche extends Model implements Sortable
+class Nature extends Model implements Sortable
 {
     use HasFactory;
+
     use SortableTrait;
 
     protected $fillable = [
-        'code',
-        'name',
+        'libelle',
         'order_column',
     ];
 
-    public $sortable = [
-        'order_column_name' => 'order_column',
-        'sort_when_creating' => true,
-    ];
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+        public $sortable = [
+            'order_column_name' => 'order_column',
+            'sort_when_creating' => true,
+        ];
 }

@@ -14,19 +14,30 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('username')->unique();
+            $table->string('phone');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
 
-            //foreign Key == #Portefeuille #Agence #Unité Commerciale #Marché #Statut
-            // $table->unsignedBigInteger('unitcommercial_id');
-            // $table->unsignedBigInteger('marche_id');
-            // $table->unsignedBigInteger('affectation_portefeuilles_id');
-            // $table->timestamps();
+            //UnsignedBigInteger Key == #Portefeuille #Agence #Unité Commerciale #Marché #Statut
+            $table->unsignedBigInteger('unitcommercial_id')->nullable();
+            $table->unsignedBigInteger('fonction_id')->nullable();
+            $table->unsignedBigInteger('marche_id')->nullable();
+            $table->unsignedBigInteger('portefeuille_id')->nullable();
+            $table->unsignedBigInteger('superieur_id')->nullable(); // Nouvelle colonne pour le supérieur hiérarchique
+            $table->timestamps();
 
-            // $table->foreign('unitcommercial_id')->references('id')->on('unitcommercials')->onDelete('cascade');
-            // $table->foreign('segment_id')->references('id')->on('segments')->onDelete('cascade');
+            //foreign
+            $table->foreign('unitcommercial_id')->references('id')->on('unitcommercials')->onDelete('cascade');
+            $table->foreign('fonction_id')->references('id')->on('fonctions')->onDelete('cascade');
+            $table->foreign('marche_id')->references('id')->on('marches')->onDelete('cascade');
+            $table->foreign('portefeuille_id')->references('id')->on('portefeuilles')->onDelete('cascade');
+
+             // Clé étrangère pour la relation avec le supérieur hiérarchique
+             $table->foreign('superieur_id')->references('id')->on('users')->onDelete('set null');
+             $table->integer('order_column')->nullable();
 
         });
 
@@ -54,5 +65,8 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('order_column');
+        });
     }
 };

@@ -38,7 +38,7 @@ class AffectationPortefeuilleController extends AdminController
         });
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-
+        $grid->sortable();
         return $grid;
     }
 
@@ -71,7 +71,7 @@ class AffectationPortefeuilleController extends AdminController
     {
         $form = new Form(new AffectationPortefeuille());
 
-        $form->display('id', __('ID'));
+        $form->interger('id', __('ID'));
         $form->number('code', __('Portefeuille'));
         $form->select('unitcommercial_id', __('Unit Commercial'))->options(function() {
             return Unitcommercial::all()->pluck('name', 'id');

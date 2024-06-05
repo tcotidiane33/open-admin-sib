@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('marches', function (Blueprint $table) {
+        Schema::create('crvs', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable();
-            $table->text('name')->nullable();
+            $table->string('reference')->unique();
+            $table->string('reference')->nullable();
+            $table->string('reference')->nullable();
+            $table->string('reference')->nullable();
+        // UnsignedBigInteger Key == #Portefeuille #Agence #Unité Commerciale #Marché #Statut
+
+        //foreign
+
             $table->integer('order_column')->nullable();
             $table->timestamps();
         });
@@ -25,8 +31,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('marches');
-        Schema::table('marches', function (Blueprint $table) {
+        Schema::dropIfExists('crvs');
+        Schema::table('crvs', function (Blueprint $table) {
             $table->dropColumn('order_column');
         });
     }

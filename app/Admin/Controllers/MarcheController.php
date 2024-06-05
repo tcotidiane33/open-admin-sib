@@ -31,7 +31,7 @@ class MarcheController extends AdminController
         $grid->column('name', __('Nom du marché'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-
+        $grid->sortable();
         return $grid;
     }
 

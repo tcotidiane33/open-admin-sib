@@ -24,7 +24,7 @@ class RubriqueComptableController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new RubriqueComptable);
+        $grid = new Grid(new RubriqueComptable());
 
         // $grid->column('id', __('ID'))->sortable();
         $grid->column('Rubrique', __('Rubrique'));
@@ -32,7 +32,7 @@ class RubriqueComptableController extends AdminController
         $grid->column('LibelleChapComp', __('Libellé chapitre comptable'));
         // $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-
+        $grid->sortable();
         return $grid;
     }
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
-class Produit extends Model
+class Produit extends Model implements Sortable
 {
     use HasFactory;
 

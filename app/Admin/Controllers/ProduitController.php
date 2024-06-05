@@ -3,11 +3,13 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Produit;
+use App\Models\Statut;
 use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 use App\Admin\Actions\Replicate;
+use OpenAdmin\Admin\Widgets\Table;
 
 
 class ProduitController extends AdminController
@@ -29,15 +31,17 @@ class ProduitController extends AdminController
         $grid = new Grid(new Produit);
 
         // $grid->column('id', __('ID'))->sortable();
-        $grid->column('title', __('Titre'));
-        $grid->column('libelle', __('Libellé'));
-        // $grid->column('created_at', __('Created at'));
-        // $grid->column('updated_at', __('Updated at'));
+        $grid->column('title', __('Titre'))->width(600);
+
+        $grid->column('libelle', __('Libellé'))->help('Voici le Libellé ');
+        $grid->sortable();
         $grid->actions(function ($actions) {
             $actions->add(new Replicate());
         });
 
         return $grid;
+
+
     }
 
     /**
@@ -57,6 +61,8 @@ class ProduitController extends AdminController
         // $show->field('updated_at', __('Updated at'));
 
         return $show;
+
+
     }
 
     /**
@@ -75,5 +81,6 @@ class ProduitController extends AdminController
         // $form->display('updated_at', __('Updated At'));
 
         return $form;
+
     }
 }

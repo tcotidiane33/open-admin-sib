@@ -30,6 +30,7 @@ class CodeOperateurController extends AdminController
         $grid->column('Rubrique', __('Rubrique'));
         $grid->column('CodeOperation', __('Code opération'));
         $grid->column('Libelle', __('Libellé'));
+        $grid->sortable();
         // $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -52,7 +53,7 @@ class CodeOperateurController extends AdminController
         $show->field('Libelle', __('Libellé'));
         // $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
-        
+
 
         return $show;
     }

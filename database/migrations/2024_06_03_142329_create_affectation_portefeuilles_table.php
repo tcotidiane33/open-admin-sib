@@ -23,14 +23,7 @@ return new class extends Migration
             $table->foreign('unitcommercial_id')->references('id')->on('unitcommercials')->onDelete('cascade');
             $table->foreign('segment_id')->references('id')->on('segments')->onDelete('cascade');
         });
-        // Schema::create('portefeuille_uc', function(Blueprint $table){
-        //     $table->foreignIdFor(Unitcommercial::class)->constrained()->cascadeOnDelete();
-        //     $table->primary(['']);
-        // });
-        // Schema::create('portefeuille_seg', function(Blueprint $table){
-        //     $table->foreignIdFor(Segment::class)->constrained()->cascadeOnDelete();
-        //     $table->primary(['']);
-        // });
+    
     }
 
     /**
